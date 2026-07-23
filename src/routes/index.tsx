@@ -66,19 +66,8 @@ function Logo() {
 function Index() {
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-50 backdrop-blur-lg bg-background/70 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Logo />
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <a href="#home" className="text-primary">Home</a>
-            <a href="#about" className="hover:text-primary transition">About</a>
-            <a href="#services" className="hover:text-primary transition">Services</a>
-            <a href="#portfolio" className="hover:text-primary transition">Portfolio</a>
-            <a href="#contact" className="hover:text-primary transition">Contact</a>
-          </nav>
-          <a href="https://wa.me/923154928868" className="hidden sm:inline-flex text-sm font-semibold tracking-wider hover:text-primary transition">LET'S TALK</a>
-        </div>
-      </header>
+      {/* header/footer live in __root */}
+
 
       <section id="home" className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--primary)_15%,transparent),transparent_60%)]" />
