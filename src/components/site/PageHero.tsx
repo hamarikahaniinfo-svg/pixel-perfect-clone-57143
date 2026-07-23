@@ -11,7 +11,7 @@ export function PageHero({ title, crumbs = [] }: { title: string; crumbs?: { to?
           {crumbs.map((c, i) => (
             <span key={i} className="flex gap-2">
               <span>›</span>
-              {c.to ? <Link to={c.to} className="hover:text-primary">{c.label}</Link> : <span className="text-primary">{c.label}</span>}
+              {c.to ? <a href={c.to} className="hover:text-primary">{c.label}</a> : <span className="text-primary">{c.label}</span>}
             </span>
           ))}
         </nav>
