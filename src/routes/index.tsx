@@ -66,19 +66,8 @@ function Logo() {
 function Index() {
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-50 backdrop-blur-lg bg-background/70 border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Logo />
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <a href="#home" className="text-primary">Home</a>
-            <a href="#about" className="hover:text-primary transition">About</a>
-            <a href="#services" className="hover:text-primary transition">Services</a>
-            <a href="#portfolio" className="hover:text-primary transition">Portfolio</a>
-            <a href="#contact" className="hover:text-primary transition">Contact</a>
-          </nav>
-          <a href="https://wa.me/923154928868" className="hidden sm:inline-flex text-sm font-semibold tracking-wider hover:text-primary transition">LET'S TALK</a>
-        </div>
-      </header>
+      {/* header/footer live in __root */}
+
 
       <section id="home" className="relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--primary)_15%,transparent),transparent_60%)]" />
@@ -323,43 +312,6 @@ function Index() {
         </div>
       </section>
 
-      <footer className="border-t border-border bg-card/40">
-        <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-4 gap-10">
-          <div>
-            <Logo />
-            <p className="text-muted-foreground text-sm mt-4">Next Feature Solution Technology — building your online business since 2020.</p>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#about" className="hover:text-primary">About</a></li>
-              <li><a href="#services" className="hover:text-primary">Services</a></li>
-              <li><a href="#portfolio" className="hover:text-primary">Portfolio</a></li>
-              <li><a href="#contact" className="hover:text-primary">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Web Development</li>
-              <li>WordPress & Shopify</li>
-              <li>Mobile App Development</li>
-              <li>SEO & Digital Marketing</li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold mb-4">Contact</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="mailto:info@nfstech.com.pk" className="hover:text-primary">info@nfstech.com.pk</a></li>
-              <li><a href="tel:+923154928868" className="hover:text-primary">+92 315 4928868</a></li>
-              <li>Islamabad, Pakistan</li>
-            </ul>
-          </div>
-        </div>
-        <div className="border-t border-border py-6 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} NFS Tech. All rights reserved.
-        </div>
-      </footer>
     </div>
   );
 }
