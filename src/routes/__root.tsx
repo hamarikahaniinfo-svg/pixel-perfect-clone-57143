@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "../components/site/Header";
 import { Footer } from "../components/site/Footer";
+import { ScrollToTop } from "../components/site/ScrollToTop";
 
 
 function NotFoundComponent() {
@@ -122,6 +123,7 @@ function RootComponent() {
       <Header />
       <Outlet />
       <Footer />
+      <ScrollToTop />
     </QueryClientProvider>
   );
 }
