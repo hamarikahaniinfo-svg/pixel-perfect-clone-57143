@@ -123,6 +123,7 @@ function RootComponent() {
       <Header />
       <Outlet />
       <Footer />
+      <ScrollToTop />
     </QueryClientProvider>
   );
 }
