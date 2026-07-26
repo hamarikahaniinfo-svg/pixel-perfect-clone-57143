@@ -324,7 +324,7 @@ function ContentAdmin() {
   const save = async () => {
     let parsed: Record<string, unknown>;
     try { parsed = JSON.parse(json); } catch { return toast.error("Invalid JSON"); }
-    const { error } = await supabase.from("site_content").upsert({ key, value: parsed, updated_at: new Date().toISOString() });
+    const { error } = await supabase.from("site_content").upsert({ key, value: parsed as never, updated_at: new Date().toISOString() });
     if (error) return toast.error(error.message);
     toast.success("Saved");
     qc.invalidateQueries({ queryKey: ["site_content", key] });
