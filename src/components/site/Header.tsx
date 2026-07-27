@@ -23,7 +23,7 @@ const portfolioLinks = [
 export function Header() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-lg bg-background/70 border-b border-border">
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/50 border-b border-white/5 shadow-[0_4px_30px_-10px_color-mix(in_oklab,var(--primary)_20%,transparent)]">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Logo />
         <nav className="hidden lg:flex items-center gap-8 text-sm font-medium">
