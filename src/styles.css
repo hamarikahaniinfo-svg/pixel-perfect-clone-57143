@@ -65,12 +65,29 @@
 }
 
 @utility card-dark {
-  background: var(--card);
-  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 70%, transparent);
+  border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
   border-radius: 1rem;
-  transition: border-color 0.3s, transform 0.3s;
-  &:hover { border-color: var(--primary); transform: translateY(-4px); }
+  backdrop-filter: blur(14px) saturate(140%);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  &:hover { border-color: var(--primary); transform: translateY(-4px); box-shadow: 0 20px 50px -20px color-mix(in oklab, var(--primary) 40%, transparent); }
 }
+
+@utility glass {
+  background: color-mix(in oklab, var(--card) 45%, transparent);
+  border: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
+  backdrop-filter: blur(18px) saturate(160%);
+  border-radius: 1rem;
+}
+
+@utility glass-strong {
+  background: color-mix(in oklab, var(--card) 70%, transparent);
+  border: 1px solid color-mix(in oklab, var(--primary) 20%, transparent);
+  backdrop-filter: blur(22px) saturate(180%);
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px -10px color-mix(in oklab, var(--primary) 25%, transparent);
+}
+
 
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .animate-marquee { animation: marquee 30s linear infinite; }
