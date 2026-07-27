@@ -3,8 +3,34 @@ import heroDevices from "@/assets/hero-devices.jpg";
 import aboutWorkspace from "@/assets/about-workspace.jpg";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "NFS Tech — We Build Your Online Business | Web, App & Marketing" },
+      { name: "description", content: "NFS Tech builds custom websites, WordPress & Shopify stores, mobile apps, software and SEO / digital marketing solutions to grow your business online since 2020." },
+      { name: "keywords", content: "web development, WordPress, Shopify, mobile apps, SEO, digital marketing, Pakistan, NFS Tech" },
+      { property: "og:title", content: "NFS Tech — We Build Your Online Business" },
+      { property: "og:description", content: "Custom websites, apps, eCommerce stores and digital marketing built to grow your business." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    scripts: [{
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "NFS Tech",
+        alternateName: "Next Feature Solution Technology",
+        url: "https://nfstech.com.pk",
+        description: "Digital solutions company delivering websites, apps, software and marketing since 2020.",
+        telephone: "+92-315-4928868",
+        email: "info@nfstech.com.pk",
+        address: { "@type": "PostalAddress", addressLocality: "Islamabad", addressCountry: "PK" },
+      }),
+    }],
+  }),
   component: Index,
 });
+
 
 const services = [
   ["01", "Website Development", "We provide custom website development based on your needs delivered by industry experts."],
