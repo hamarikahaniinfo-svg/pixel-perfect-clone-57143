@@ -1,20 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function ScrollToTop() {
   const [visible, setVisible] = useState(false);
   const [progress, setProgress] = useState(0);
+  const ticking = useRef(false);
 
   useEffect(() => {
-    const onScroll = () => {
+    const compute = () => {
       const h = document.documentElement;
       const scrolled = h.scrollTop;
       const max = h.scrollHeight - h.clientHeight;
-      setProgress(max > 0 ? Math.min(100, (scrolled / max) * 100) : 0);
+      const pct = max > 0 ? Math.min(100, (scrolled / max) * 100) : 0;
+      setProgress((prev) => (Math.abs(prev - pct) > 0.5 ? pct : prev));
       setVisible(scrolled > 400);
+      ticking.current = false;
     };
-    onScroll();
+    const onScroll = () => {
+      if (ticking.current) return;
+      ticking.current = true;
+      requestAnimationFrame(compute);
+    };
+    compute();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   const circ = 2 * Math.PI * 22;
