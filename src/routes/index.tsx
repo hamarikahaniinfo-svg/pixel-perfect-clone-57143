@@ -217,19 +217,19 @@ function Index() {
         </div>
       </section>
 
-      <section className="bg-card/30 border-y border-border">
+      <section className="relative bg-aurora border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-24">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Clients <span className="text-primary">Feedback</span></h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">We work with a diverse range of clients, from startups to established businesses, helping them grow online and achieve their digital goals.</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 animate-blur-in">Clients <span className="animate-text-shimmer">Feedback</span></h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto animate-fade-up delay-100">We work with a diverse range of clients, from startups to established businesses, helping them grow online and achieve their digital goals.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map(t => (
-              <div key={t.name} className="card-dark p-8">
-                <div className="text-primary text-3xl mb-4">"</div>
+            {testimonials.map((t, i) => (
+              <div key={t.name} className="glass-strong p-8 hover-lift animate-fade-up" style={{ animationDelay: `${i * 120}ms` }}>
+                <div className="text-primary text-4xl mb-4 leading-none">"</div>
                 <p className="mb-6 text-muted-foreground">{t.text}</p>
-                <div className="flex items-center gap-3 pt-4 border-t border-border">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">{t.name.charAt(0)}</div>
+                <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary animate-glow-pulse">{t.name.charAt(0)}</div>
                   <div>
                     <div className="font-semibold">{t.name}</div>
                     <div className="text-xs text-muted-foreground">{t.role}</div>
@@ -241,14 +241,14 @@ function Index() {
         </div>
       </section>
 
-      <section id="pricing" className="max-w-7xl mx-auto px-6 py-24">
+      <section id="pricing" className="relative max-w-7xl mx-auto px-6 py-24">
         <div className="text-center mb-16">
-          <p className="text-primary uppercase tracking-widest text-sm mb-3">Explore Pricing Plan</p>
-          <h2 className="text-4xl md:text-5xl font-bold">Amazing <span className="text-primary">Pricing Plan</span></h2>
+          <p className="text-primary uppercase tracking-widest text-sm mb-3 animate-fade-in">Explore Pricing Plan</p>
+          <h2 className="text-4xl md:text-5xl font-bold animate-blur-in">Amazing <span className="animate-text-shimmer">Pricing Plan</span></h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
-          {plans.map(p => (
-            <div key={p.name} className={`card-dark p-8 ${p.featured ? "border-primary bg-primary/5" : ""}`}>
+          {plans.map((p, i) => (
+            <div key={p.name} className={`${p.featured ? "glass-strong animate-pulse-glow" : "glass"} p-8 hover-lift animate-fade-up`} style={{ animationDelay: `${i * 100}ms` }}>
               <h3 className="text-2xl font-bold mb-2">{p.name}</h3>
               <p className="text-sm text-muted-foreground mb-6">{p.note}</p>
               <div className="flex items-end gap-1 mb-8">
