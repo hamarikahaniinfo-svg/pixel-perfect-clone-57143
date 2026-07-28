@@ -71,7 +71,8 @@ function AdminPage() {
           <TabsContent value="faqs"><FaqsAdmin /></TabsContent>
           <TabsContent value="content"><ContentAdmin /></TabsContent>
         </Tabs>
-      )}
+        )}
+      </div>
     </div>
   );
 }
