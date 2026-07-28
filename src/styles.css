@@ -155,3 +155,43 @@
     radial-gradient(circle at 80% 60%, color-mix(in oklab, var(--primary) 15%, transparent), transparent 45%),
     radial-gradient(circle at 40% 90%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 50%);
 }
+
+/* Smooth momentum scrolling + prevent overscroll bounce triggering nav gestures */
+html, body {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
+}
+
+/* Mobile performance: heavy backdrop-filter + huge blurred circles cause
+   scroll jank and browser-forced repaints (which can manifest as scroll
+   position resets on iOS/Android). Downgrade the expensive effects on
+   small screens while keeping the visual language. */
+@media (max-width: 900px) {
+  .glass, .glass-strong, .card-dark {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  .glass { background: color-mix(in oklab, var(--card) 80%, transparent); }
+  .glass-strong { background: color-mix(in oklab, var(--card) 92%, transparent); }
+  header.sticky { backdrop-filter: blur(8px) !important; }
+  .animate-pulse-glow,
+  .animate-glow-pulse,
+  .animate-text-shimmer,
+  .animate-gradient { animation: none !important; }
+  .animate-float { animation: none !important; }
+  /* Tame giant blurred decorative blobs that repaint every scroll frame */
+  [class*="blur-[120px]"],
+  [class*="blur-[100px]"] {
+    filter: blur(60px) !important;
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
