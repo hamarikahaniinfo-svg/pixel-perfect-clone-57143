@@ -115,12 +115,12 @@ function Index() {
         </div>
       </section>
 
-      <section className="border-y border-border bg-card/40">
-        <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-3 gap-6 text-center">
-          {[["7+", "Years Of Experience"], ["1K+", "Projects Completed"], ["99%", "Client Satisfaction"]].map(([n, l]) => (
-            <div key={l}>
-              <div className="text-4xl md:text-6xl font-bold text-primary">{n}</div>
-              <div className="text-muted-foreground text-sm mt-2 uppercase tracking-wider">{l}</div>
+      <section className="relative border-y border-white/5">
+        <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-3 gap-6 text-center">
+          {[["7+", "Years Of Experience"], ["1K+", "Projects Completed"], ["99%", "Client Satisfaction"]].map(([n, l], i) => (
+            <div key={l} className={`glass p-6 hover-lift animate-scale-in delay-${(i + 1) * 100}`}>
+              <div className="text-4xl md:text-6xl font-bold text-primary animate-glow-pulse">{n}</div>
+              <div className="text-muted-foreground text-xs md:text-sm mt-2 uppercase tracking-wider">{l}</div>
             </div>
           ))}
         </div>
