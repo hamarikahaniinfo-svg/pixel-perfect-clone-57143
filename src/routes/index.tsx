@@ -95,20 +95,21 @@ function Index() {
       {/* header/footer live in __root */}
 
 
-      <section id="home" className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--primary)_15%,transparent),transparent_60%)]" />
+      <section id="home" className="relative overflow-hidden bg-aurora">
+        <div className="absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full bg-primary/20 blur-[120px] animate-pulse-glow" />
+        <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-accent/15 blur-[120px]" />
         <div className="max-w-7xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center relative">
-          <div>
-            <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4">Website Designing — Graphics Designing — Digital Marketing</p>
+          <div className="animate-blur-in">
+            <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4 animate-fade-in">Website Designing — Graphics Designing — Digital Marketing</p>
             <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] mb-6">
-              We Build Your <span className="text-primary-glow">Online Business.</span>
+              <span className="animate-reveal-mask inline-block">We Build Your</span> <span className="animate-text-shimmer animate-glow-pulse">Online Business.</span>
             </h1>
-            <p className="text-muted-foreground text-lg mb-8 max-w-xl">
+            <p className="text-muted-foreground text-lg mb-8 max-w-xl animate-fade-up delay-200">
               NFS TECH, Next Feature Solution Technology is a forward thinking digital solutions company committed to transforming ideas into powerful online experiences. We specialize in delivering high-quality web and mobile solutions designed to meet the unique needs of businesses across diverse industries, since 2020.
             </p>
-            <a href="https://wa.me/923154928868" className="btn-primary">Get A Free Quote →</a>
+            <a href="https://wa.me/923154928868" className="btn-primary animate-scale-in delay-300">Get A Free Quote →</a>
           </div>
-          <div className="animate-float">
+          <div className="animate-float glass-strong p-4 animate-slide-in-right">
             <img src={heroDevices} alt="Device showcase" width={1400} height={1000} className="w-full rounded-2xl" />
           </div>
         </div>
