@@ -95,31 +95,32 @@ function Index() {
       {/* header/footer live in __root */}
 
 
-      <section id="home" className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--primary)_15%,transparent),transparent_60%)]" />
+      <section id="home" className="relative overflow-hidden bg-aurora">
+        <div className="absolute -top-24 -right-24 w-[520px] h-[520px] rounded-full bg-primary/20 blur-[120px] animate-pulse-glow" />
+        <div className="absolute -bottom-32 -left-24 w-[420px] h-[420px] rounded-full bg-accent/15 blur-[120px]" />
         <div className="max-w-7xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center relative">
-          <div>
-            <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4">Website Designing — Graphics Designing — Digital Marketing</p>
+          <div className="animate-blur-in">
+            <p className="text-muted-foreground text-sm uppercase tracking-widest mb-4 animate-fade-in">Website Designing — Graphics Designing — Digital Marketing</p>
             <h1 className="text-5xl md:text-7xl font-bold leading-[1.05] mb-6">
-              We Build Your <span className="text-primary-glow">Online Business.</span>
+              <span className="animate-reveal-mask inline-block">We Build Your</span> <span className="animate-text-shimmer animate-glow-pulse">Online Business.</span>
             </h1>
-            <p className="text-muted-foreground text-lg mb-8 max-w-xl">
+            <p className="text-muted-foreground text-lg mb-8 max-w-xl animate-fade-up delay-200">
               NFS TECH, Next Feature Solution Technology is a forward thinking digital solutions company committed to transforming ideas into powerful online experiences. We specialize in delivering high-quality web and mobile solutions designed to meet the unique needs of businesses across diverse industries, since 2020.
             </p>
-            <a href="https://wa.me/923154928868" className="btn-primary">Get A Free Quote →</a>
+            <a href="https://wa.me/923154928868" className="btn-primary animate-scale-in delay-300">Get A Free Quote →</a>
           </div>
-          <div className="animate-float">
+          <div className="animate-float glass-strong p-4 animate-slide-in-right">
             <img src={heroDevices} alt="Device showcase" width={1400} height={1000} className="w-full rounded-2xl" />
           </div>
         </div>
       </section>
 
-      <section className="border-y border-border bg-card/40">
-        <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-3 gap-6 text-center">
-          {[["7+", "Years Of Experience"], ["1K+", "Projects Completed"], ["99%", "Client Satisfaction"]].map(([n, l]) => (
-            <div key={l}>
-              <div className="text-4xl md:text-6xl font-bold text-primary">{n}</div>
-              <div className="text-muted-foreground text-sm mt-2 uppercase tracking-wider">{l}</div>
+      <section className="relative border-y border-white/5">
+        <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-3 gap-6 text-center">
+          {[["7+", "Years Of Experience"], ["1K+", "Projects Completed"], ["99%", "Client Satisfaction"]].map(([n, l], i) => (
+            <div key={l} className={`glass p-6 hover-lift animate-scale-in delay-${(i + 1) * 100}`}>
+              <div className="text-4xl md:text-6xl font-bold text-primary animate-glow-pulse">{n}</div>
+              <div className="text-muted-foreground text-xs md:text-sm mt-2 uppercase tracking-wider">{l}</div>
             </div>
           ))}
         </div>
@@ -150,15 +151,16 @@ function Index() {
         </div>
       </section>
 
-      <section id="services" className="max-w-7xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <p className="text-primary uppercase tracking-widest text-sm mb-3">Our Popular Services</p>
-          <h2 className="text-4xl md:text-5xl font-bold">Special Service <span className="text-primary">For your Business Development</span></h2>
+      <section id="services" className="relative max-w-7xl mx-auto px-6 py-24">
+        <div className="absolute inset-x-0 top-24 h-64 bg-aurora opacity-60 pointer-events-none" />
+        <div className="text-center mb-16 relative">
+          <p className="text-primary uppercase tracking-widest text-sm mb-3 animate-fade-in">Our Popular Services</p>
+          <h2 className="text-4xl md:text-5xl font-bold animate-blur-in">Special Service <span className="animate-text-shimmer">For your Business Development</span></h2>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {services.map(([n, title, desc]) => (
-            <div key={n} className="card-dark p-8">
-              <div className="text-5xl font-bold text-primary/30 mb-3">{n}</div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 relative">
+          {services.map(([n, title, desc], i) => (
+            <div key={n} className="glass p-8 hover-lift group animate-fade-up" style={{ animationDelay: `${i * 60}ms` }}>
+              <div className="text-5xl font-bold text-primary/40 mb-3 group-hover:text-primary transition">{n}</div>
               <h3 className="text-xl font-semibold mb-3">{title}</h3>
               <p className="text-muted-foreground text-sm">{desc}</p>
             </div>
@@ -215,19 +217,19 @@ function Index() {
         </div>
       </section>
 
-      <section className="bg-card/30 border-y border-border">
+      <section className="relative bg-aurora border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-24">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">Clients <span className="text-primary">Feedback</span></h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">We work with a diverse range of clients, from startups to established businesses, helping them grow online and achieve their digital goals.</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 animate-blur-in">Clients <span className="animate-text-shimmer">Feedback</span></h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto animate-fade-up delay-100">We work with a diverse range of clients, from startups to established businesses, helping them grow online and achieve their digital goals.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map(t => (
-              <div key={t.name} className="card-dark p-8">
-                <div className="text-primary text-3xl mb-4">"</div>
+            {testimonials.map((t, i) => (
+              <div key={t.name} className="glass-strong p-8 hover-lift animate-fade-up" style={{ animationDelay: `${i * 120}ms` }}>
+                <div className="text-primary text-4xl mb-4 leading-none">"</div>
                 <p className="mb-6 text-muted-foreground">{t.text}</p>
-                <div className="flex items-center gap-3 pt-4 border-t border-border">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">{t.name.charAt(0)}</div>
+                <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary animate-glow-pulse">{t.name.charAt(0)}</div>
                   <div>
                     <div className="font-semibold">{t.name}</div>
                     <div className="text-xs text-muted-foreground">{t.role}</div>
@@ -239,14 +241,14 @@ function Index() {
         </div>
       </section>
 
-      <section id="pricing" className="max-w-7xl mx-auto px-6 py-24">
+      <section id="pricing" className="relative max-w-7xl mx-auto px-6 py-24">
         <div className="text-center mb-16">
-          <p className="text-primary uppercase tracking-widest text-sm mb-3">Explore Pricing Plan</p>
-          <h2 className="text-4xl md:text-5xl font-bold">Amazing <span className="text-primary">Pricing Plan</span></h2>
+          <p className="text-primary uppercase tracking-widest text-sm mb-3 animate-fade-in">Explore Pricing Plan</p>
+          <h2 className="text-4xl md:text-5xl font-bold animate-blur-in">Amazing <span className="animate-text-shimmer">Pricing Plan</span></h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
-          {plans.map(p => (
-            <div key={p.name} className={`card-dark p-8 ${p.featured ? "border-primary bg-primary/5" : ""}`}>
+          {plans.map((p, i) => (
+            <div key={p.name} className={`${p.featured ? "glass-strong animate-pulse-glow" : "glass"} p-8 hover-lift animate-fade-up`} style={{ animationDelay: `${i * 100}ms` }}>
               <h3 className="text-2xl font-bold mb-2">{p.name}</h3>
               <p className="text-sm text-muted-foreground mb-6">{p.note}</p>
               <div className="flex items-end gap-1 mb-8">
