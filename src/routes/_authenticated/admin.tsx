@@ -41,21 +41,23 @@ function AdminPage() {
   if (isAdmin === null) return <div className="py-32 text-center text-muted-foreground">Loading…</div>;
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-12">
-      <div className="flex flex-wrap gap-4 justify-between items-center mb-8">
-        <div>
-          <h1 className="text-3xl font-bold">Admin Panel</h1>
-          <p className="text-sm text-muted-foreground">Signed in as {email}</p>
+    <div className="relative min-h-screen bg-aurora">
+      <div className="absolute -top-24 -right-24 w-[420px] h-[420px] rounded-full bg-primary/15 blur-[120px] pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-6 py-12 relative">
+        <div className="glass-strong p-6 flex flex-wrap gap-4 justify-between items-center mb-8 animate-fade-up">
+          <div>
+            <h1 className="text-3xl font-bold animate-text-shimmer">Admin Panel</h1>
+            <p className="text-sm text-muted-foreground">Signed in as {email}</p>
+          </div>
+          <button onClick={handleSignOut} className="text-sm px-4 py-2 border border-white/10 rounded-full hover:border-primary transition backdrop-blur">Sign Out</button>
         </div>
-        <button onClick={handleSignOut} className="text-sm px-4 py-2 border border-border rounded hover:border-primary">Sign Out</button>
-      </div>
 
-      {!isAdmin ? (
-        <div className="card-dark p-8 text-center">
-          <p className="mb-4 text-muted-foreground">You don't have admin access yet.</p>
-          <button onClick={handleClaim} className="btn-primary">Claim Admin Role</button>
-          <p className="text-xs text-muted-foreground mt-3">Only the first user can claim admin.</p>
-        </div>
+        {!isAdmin ? (
+          <div className="glass-strong p-8 text-center animate-scale-in">
+            <p className="mb-4 text-muted-foreground">You don't have admin access yet.</p>
+            <button onClick={handleClaim} className="btn-primary">Claim Admin Role</button>
+            <p className="text-xs text-muted-foreground mt-3">Only the first user can claim admin.</p>
+          </div>
       ) : (
         <Tabs defaultValue="services">
           <TabsList className="mb-6 flex-wrap h-auto">
