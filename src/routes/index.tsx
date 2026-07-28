@@ -151,15 +151,16 @@ function Index() {
         </div>
       </section>
 
-      <section id="services" className="max-w-7xl mx-auto px-6 py-24">
-        <div className="text-center mb-16">
-          <p className="text-primary uppercase tracking-widest text-sm mb-3">Our Popular Services</p>
-          <h2 className="text-4xl md:text-5xl font-bold">Special Service <span className="text-primary">For your Business Development</span></h2>
+      <section id="services" className="relative max-w-7xl mx-auto px-6 py-24">
+        <div className="absolute inset-x-0 top-24 h-64 bg-aurora opacity-60 pointer-events-none" />
+        <div className="text-center mb-16 relative">
+          <p className="text-primary uppercase tracking-widest text-sm mb-3 animate-fade-in">Our Popular Services</p>
+          <h2 className="text-4xl md:text-5xl font-bold animate-blur-in">Special Service <span className="animate-text-shimmer">For your Business Development</span></h2>
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {services.map(([n, title, desc]) => (
-            <div key={n} className="card-dark p-8">
-              <div className="text-5xl font-bold text-primary/30 mb-3">{n}</div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 relative">
+          {services.map(([n, title, desc], i) => (
+            <div key={n} className="glass p-8 hover-lift group animate-fade-up" style={{ animationDelay: `${i * 60}ms` }}>
+              <div className="text-5xl font-bold text-primary/40 mb-3 group-hover:text-primary transition">{n}</div>
               <h3 className="text-xl font-semibold mb-3">{title}</h3>
               <p className="text-muted-foreground text-sm">{desc}</p>
             </div>
