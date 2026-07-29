@@ -88,10 +88,13 @@ export function Header() {
           </button>
         </div>
       </div>
+    </header>
 
-      {/* Mobile drawer */}
+    {/* Mobile drawer — portalled to body so the header's backdrop-filter
+        doesn't become the containing block for position: fixed */}
+    {mounted && createPortal(
       <div
-        className={`lg:hidden fixed inset-0 z-40 transition-opacity duration-300 ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        className={`lg:hidden fixed inset-0 z-[100] transition-opacity duration-300 ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         aria-hidden={!open}
       >
         <div
