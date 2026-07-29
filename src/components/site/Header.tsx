@@ -176,8 +176,10 @@ export function Header() {
             </div>
           </div>
         </aside>
-      </div>
-    </header>
+      </div>,
+      document.body,
+    )}
+    </>
   );
 }
 
