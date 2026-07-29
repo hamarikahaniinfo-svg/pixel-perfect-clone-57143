@@ -1,5 +1,6 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { services } from "@/data/services";
 
 function Logo({ onClick }: { onClick?: () => void }) {
@@ -24,7 +25,10 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [portfolioOpen, setPortfolioOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => { setMounted(true); }, []);
 
   // Close drawer on route change
   useEffect(() => { setOpen(false); }, [pathname]);
@@ -39,6 +43,7 @@ export function Header() {
   }, [open]);
 
   return (
+    <>
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-white/5 shadow-[0_4px_30px_-10px_color-mix(in_oklab,var(--primary)_20%,transparent)]">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Logo />
@@ -84,10 +89,13 @@ export function Header() {
           </button>
         </div>
       </div>
+    </header>
 
-      {/* Mobile drawer */}
+    {/* Mobile drawer — portalled to body so the header's backdrop-filter
+        doesn't become the containing block for position: fixed */}
+    {mounted && createPortal(
       <div
-        className={`lg:hidden fixed inset-0 z-40 transition-opacity duration-300 ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        className={`lg:hidden fixed inset-0 z-[100] transition-opacity duration-300 ${open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         aria-hidden={!open}
       >
         <div
@@ -169,8 +177,10 @@ export function Header() {
             </div>
           </div>
         </aside>
-      </div>
-    </header>
+      </div>,
+      document.body,
+    )}
+    </>
   );
 }
 
