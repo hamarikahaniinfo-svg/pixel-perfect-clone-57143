@@ -25,7 +25,10 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [portfolioOpen, setPortfolioOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => { setMounted(true); }, []);
 
   // Close drawer on route change
   useEffect(() => { setOpen(false); }, [pathname]);
