@@ -43,6 +43,7 @@ export function Header() {
   }, [open]);
 
   return (
+    <>
     <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/70 border-b border-white/5 shadow-[0_4px_30px_-10px_color-mix(in_oklab,var(--primary)_20%,transparent)]">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Logo />
