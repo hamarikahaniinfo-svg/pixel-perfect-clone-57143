@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { services } from "@/data/services";
+import { supabase } from "@/integrations/supabase/client";
 
 function Logo({ onClick }: { onClick?: () => void }) {
   return (
@@ -18,17 +19,25 @@ const portfolioLinks = [
   { to: "/website-projects", label: "Website Projects" },
   { to: "/graphics-design", label: "Graphics Design" },
   { to: "/seo-portfolio", label: "SEO Portfolio" },
-  { to: "/meta-ads", label: "Meta Ads" },
-];
+] as const;
+
 
 export function Header() {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [portfolioOpen, setPortfolioOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [signedIn, setSignedIn] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => { setMounted(true); }, []);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => setSignedIn(!!data.session));
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => setSignedIn(!!session));
+    return () => sub.subscription.unsubscribe();
+  }, []);
+
 
   // Close drawer on route change
   useEffect(() => { setOpen(false); }, [pathname]);
@@ -74,7 +83,11 @@ export function Header() {
           <Link to="/contact" activeProps={{ className: "text-primary" }} className="hover:text-primary transition">Contact</Link>
         </nav>
         <div className="flex items-center gap-3">
+          {mounted && signedIn && (
+            <Link to="/admin" className="hidden sm:inline-flex text-sm font-semibold tracking-wider text-primary hover:opacity-80 transition">ADMIN</Link>
+          )}
           <a href="https://wa.me/923154928868" className="hidden sm:inline-flex text-sm font-semibold tracking-wider hover:text-primary transition">LET'S TALK</a>
+
           <button
             onClick={() => setOpen(!open)}
             className="lg:hidden relative w-11 h-11 rounded-full bg-primary text-primary-foreground flex items-center justify-center overflow-hidden"
@@ -170,7 +183,11 @@ export function Header() {
           </nav>
 
           <div className="border-t border-white/10 p-5 space-y-3">
+            <Link to={signedIn ? "/admin" : "/auth"} className="block text-center text-sm font-semibold text-primary hover:opacity-80">
+              {signedIn ? "Admin Dashboard" : "Admin Sign In"}
+            </Link>
             <a href="https://wa.me/923154928868" className="btn-primary w-full justify-center">Let's Talk →</a>
+
             <div className="flex flex-col gap-1 text-sm text-muted-foreground">
               <a href="mailto:info@nfstech.com.pk" className="hover:text-primary">info@nfstech.com.pk</a>
               <a href="tel:+923154928868" className="hover:text-primary">+92 315 4928868</a>
