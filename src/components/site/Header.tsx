@@ -83,7 +83,11 @@ export function Header() {
           <Link to="/contact" activeProps={{ className: "text-primary" }} className="hover:text-primary transition">Contact</Link>
         </nav>
         <div className="flex items-center gap-3">
+          {mounted && signedIn && (
+            <Link to="/admin" className="hidden sm:inline-flex text-sm font-semibold tracking-wider text-primary hover:opacity-80 transition">ADMIN</Link>
+          )}
           <a href="https://wa.me/923154928868" className="hidden sm:inline-flex text-sm font-semibold tracking-wider hover:text-primary transition">LET'S TALK</a>
+
           <button
             onClick={() => setOpen(!open)}
             className="lg:hidden relative w-11 h-11 rounded-full bg-primary text-primary-foreground flex items-center justify-center overflow-hidden"
