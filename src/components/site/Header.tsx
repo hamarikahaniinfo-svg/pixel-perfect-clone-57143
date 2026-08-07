@@ -183,7 +183,11 @@ export function Header() {
           </nav>
 
           <div className="border-t border-white/10 p-5 space-y-3">
+            <Link to={signedIn ? "/admin" : "/auth"} className="block text-center text-sm font-semibold text-primary hover:opacity-80">
+              {signedIn ? "Admin Dashboard" : "Admin Sign In"}
+            </Link>
             <a href="https://wa.me/923154928868" className="btn-primary w-full justify-center">Let's Talk →</a>
+
             <div className="flex flex-col gap-1 text-sm text-muted-foreground">
               <a href="mailto:info@nfstech.com.pk" className="hover:text-primary">info@nfstech.com.pk</a>
               <a href="tel:+923154928868" className="hover:text-primary">+92 315 4928868</a>
