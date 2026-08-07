@@ -38,6 +38,8 @@ export function Footer() {
       </div>
       <div className="border-t border-border py-6 text-center text-sm text-muted-foreground">
         Copyright © {new Date().getFullYear()}, NFS Tech. All Rights Reserved.
+        <span className="mx-2 opacity-40">|</span>
+        <Link to="/auth" className="hover:text-primary">Admin</Link>
       </div>
     </footer>
   );
