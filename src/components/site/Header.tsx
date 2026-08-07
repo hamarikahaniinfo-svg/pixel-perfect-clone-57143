@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { services } from "@/data/services";
+import { supabase } from "@/integrations/supabase/client";
 
 function Logo({ onClick }: { onClick?: () => void }) {
   return (
@@ -18,8 +19,8 @@ const portfolioLinks = [
   { to: "/website-projects", label: "Website Projects" },
   { to: "/graphics-design", label: "Graphics Design" },
   { to: "/seo-portfolio", label: "SEO Portfolio" },
-  { to: "/meta-ads", label: "Meta Ads" },
-];
+] as const;
+
 
 export function Header() {
   const [open, setOpen] = useState(false);
